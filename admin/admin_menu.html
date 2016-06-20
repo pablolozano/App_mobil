@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<!--
+  * Please see the included README.md file for license terms and conditions.
+  -->
+<head>
+    <title>App Micolegio</title>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+
+    <!-- see http://webdesign.tutsplus.com/tutorials/htmlcss-tutorials/quick-tip-dont-forget-the-viewport-meta-tag -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <style>
+        /* following two viewport lines are equivalent to the meta viewport statement above, needed for Windows */
+        /* see http://www.quirksmode.org/blog/archives/2014/05/html5_dev_conf.html and http://dev.w3.org/csswg/css-device-adapt/ */
+        @-ms-viewport { width: 100vw ; zoom: 100% ; }  @viewport { width: 100vw ; zoom: 100% ; }
+        @-ms-viewport { user-zoom: fixed ; }           @viewport { user-zoom: fixed ; }
+    </style>
+    <link href="../jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css" rel="stylesheet" type="text/css"/>
+    <script src="../js/jquery-1.12.4.min.js"></script>
+    <script src="../jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script src="../js/admin_menu_JS.js"></script>
+    <script src="../js/function.js"></script>
+    <!--<script src="../cordova.js"></script>          <!-- phantom library, needed for Cordova api calls, added during build -->
+    <!--<script src="../js/app.js"></script>           <!-- recommended location of your JavaScript code relative to other JS files -->
+    <script src="../xdk/init-dev.js"></script>     <!-- normalizes device and document ready events, see README for details -->
+</head>
+
+<body>
+    <!-- home -->
+    <div data-role="page" id="inicio">
+        <div data-role="header">
+            <h1>Inicio</h1>
+        </div>
+        <div data-role="content" align="center">
+            <div class="ui-grid-b" id="opc">
+                <!--
+                <div class="ui-block-a"><img src="../img/sms-icon.png" width="50px" height="50px" /></div>
+                <div class="ui-block-b"><img src="../img/mailchimp-icon.png" width="50px" height="50px" /></div>
+                <div class="ui-block-c"><img src="../img/twitter-icon.png" width="50px" height="50px" /></div>
+                -->
+                <!-- OPCIONES DEL MENU DE INICIO -->
+            </div>
+        </div>
+        <div data-role="footer" style="overflow:hidden;">
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="#" data-icon="grid" class="ui-btn-active">Inicio</a></li>
+                    <li><a href="#" data-icon="search">Colegios</a></li>
+                    <li><a href="#usuario" data-icon="user" data-transition="flow">Usuario</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <!-- usuario -->
+    <div data-role="page" id="usuario">
+        <div data-role="header">
+            <h1>Usuario</h1>
+        </div>
+        <div data-role="content">
+            <ul data-role="listview">
+                <li><a onclick="logout('../login.html')">Logout</a></li>
+            </ul>
+        </div>
+        <div data-role="footer" style="overflow:hidden;">
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="#inicio" data-icon="grid" data-transition="flow">Inicio</a></li>
+                    <li><a href="#" data-icon="search">Colegios</a></li>
+                    <li><a href="#" data-icon="user" class="ui-btn-active">Usuario</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
