@@ -1,4 +1,4 @@
-var globalURL = 'http://micolegio.com/app-movil/include/ajax.php';
+var globalURL = 'URL not included';
 //ENVIO DE DATOS MEDIANTE AJAX HACIA PHP
 function post(url,json,loader){
     if(loader){
