@@ -1,8 +1,8 @@
 //CUANDO EL DOM ESTE CARGADO
-$(document).ready(function(){
+$(document).on("pageshow","#login-main",function(event, ui){
     //VALIDAR SESION
     if(check_session()){
-        window.location = "admin/admin_menu.html#inicio";
+        $.mobile.changePage("admin/admin_menu.html",{ transition : "none"});
     }else{
         //HACER FOCUS EN EL INPUT DEL USUARIO
         $('#user').focus();
@@ -16,8 +16,7 @@ $(document).ready(function(){
                 alert("Usuario o Contraseña no validos");
             }else{
                 //REDIRECCIONAR Y ENVIAR VARIABLES POR URL
-                var l = JSON.parse(login);
-                window.location = "admin/admin_menu.html#inicio?codWeb="+l['codigo']+"&userName="+l['coduser']+"&nivel_acceso="+l['nivel_acceso'];
+                $.mobile.changePage("admin/admin_menu.html",{ transition : "fade"});
             }
         });
     }

@@ -1,14 +1,11 @@
 <!DOCTYPE html>
 <html>
     <body>
-        <div data-role="page" class="pag-admin" id="inicio">
-            <div data-role="header" data-position="fixed">
-                <h1>Inicio</h1>
-            </div>
-            <div data-role="content" align="center">
-                <div class="ui-grid-b" id="opc">
-                    <!-- OPCIONES DEL MENU DE INICIO -->
-                </div>
+        <!-- home -->
+        <div class="pag-admin" data-role="page" id="twitter-main">
+            <div id="head" data-role="header" data-position="fixed">
+                <a id="admin_menu.html#inicio" class="ui-btn ui-icon-arrow-l ui-shadow ui-btn-icon-notext ui-corner-all link"></a>
+                <h1>Solicitudes twitter</h1>
             </div>
             <div data-role="footer" data-position="fixed">
                 <div data-role="navbar">
@@ -20,11 +17,7 @@
                 </div>
             </div>
             
-            <!-- panel de subopciones -->
-            <div data-role="panel" id="panelsub" data-position="left" data-display="overlay">
-                <!-- SUB-OPCIONES -->
-            </div>
-
+            <img src="../jquery.mobile-1.4.5/images/ajax-loader.gif" alt="Cargando..." class="loader"/>
             <!-- usuario -->
             <div data-role="panel" id="usuario" data-position="right" data-display="overlay">
                 <div data-role="content">
@@ -33,7 +26,6 @@
                     </ul>
                 </div>
             </div>
-            <img src="../jquery.mobile-1.4.5/images/ajax-loader.gif" alt="Cargando..." class="loader"/>
         </div>
     </body>
 </html>

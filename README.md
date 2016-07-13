@@ -1,1 +1,1 @@
-# App
+This is a demo of a hybrid app developed in Intel XDk with JQuery mobile

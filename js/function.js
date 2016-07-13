@@ -1,8 +1,8 @@
 var globalURL = 'http://micolegio.com/app-movil/include/ajax.php';
 //ENVIO DE DATOS MEDIANTE AJAX HACIA PHP
 function post(url,json,loader){
-    if(!document.getElementById("loader")){
-        $("body").append('<img src="jquery.mobile-1.4.5/images/ajax-loader.gif" alt="Cargando..." id="loader" style="display:none; position:fixed; left:45%; top:30%;"/>');
+    if(loader){
+       $(".loader").fadeIn();
     }
     var r;
     $.ajax({
@@ -10,20 +10,15 @@ function post(url,json,loader){
        data: json,
        type: 'post',
        async: false,
-       beforeSend: function () {
-           if(loader){
-               $("#loader").fadeIn();
-           }
-        },
        success: function(request){
            if(loader){
-               $("#loader").fadeOut();
+               $(".loader").fadeOut();
            }
            r = request;
        },
        error: function( jqXHR, textStatus, errorThrown ){
             if (jqXHR.status === 0) {
-                alert('Not connect: Verify Network.');
+                alert('Not connected: Verify Network.');
             } else if (jqXHR.status == 404) {
                 alert('Requested page not found [404]');
             } else if (jqXHR.status == 500) {
@@ -38,7 +33,7 @@ function post(url,json,loader){
                 alert('Uncaught Error: ' + jqXHR.responseText);
             }
            if(loader){
-               $("#loader").fadeOut();
+               $(".loader").fadeOut();
            }
        }
     });
@@ -47,23 +42,21 @@ function post(url,json,loader){
 //VALIDAR SESION
 function check_session(){
     var json = {case:'session'};
-    var session = post(globalURL,json,false);
-    alert(session);
+    var session = post(globalURL,json,true);
     return session;
 }
 //CERRAR SESION
-function logout(url){
+function logout(){
     var json = {case:'logout'};
-    var logout = post(globalURL,json,true);
-    if(!logout){
+    var logoutV = post(globalURL,json,true);
+    if(!logoutV){
         alert("No se pudo cerrar sesion");
     }else{
         alert("Se ha cerrado la sesion");
-        //$.mobile.changePage( url, { transition: "flip" });
-        window.location = url;
+        window.location = "../index.html";
     }
 }
-//OBTENER VARIABLES DEL URL
+//OBTENER VARIABLES DEL URL (NO USAR)
 function vars_url(loc){
     if(loc.indexOf('?') > 0){
         var variables = loc.split('?')[1];
@@ -79,8 +72,15 @@ function vars_url(loc){
             });
             return datos;
         }else{
-            return variables.split('=')[1];
+            var datos = new Array();
+            v = variables.split('=')[0];
+            d = variables.split('=')[1];
+            datos[''+v] = d;
+            return datos;
         }
+    }else{
+        
+        return false;
     }
 }
 //OBTENER FECHA ACTUAL
@@ -89,16 +89,44 @@ function curr_date(){
     var dd = today.getDate();
     var mm = today.getMonth()+1; //January is 0!
     var yyyy = today.getFullYear();
-    var hour = today
 
     if(dd<10) {
-        dd='0'+dd
+        dd='0'+dd;
     } 
 
     if(mm<10) {
-        mm='0'+mm
+        mm='0'+mm;
     } 
 
-    today = yyyy+'/'+mm+'/'+dd;
+    today = yyyy+'-'+mm+'-'+dd;
     return(today);
+}
+
+function goBack() {
+    $.mobile.changePage("admin_menu.html",{ transition : "none"});
+}
+
+function linkLoader (){
+    $(".link").click(function(){
+        var id = this.id;
+        $.mobile.changePage(id,{ transition : "fade" });
+    });
+}
+function selectorColegios(){
+    /*  se debe agregr este html
+        
+        <label>Colegio</label>
+        <select name="colegio" id="colegio">
+            <!-- CARGA DE PLANTELES -->
+        </select>
+    
+    */
+    var json = {case:'planteles'};
+    var planteles = post(globalURL,json,true);
+    var jsonparse = JSON.parse(planteles);
+    var html = '<option value="0">Seleccione...</option>';
+    $.each(jsonparse, function(i,val){
+        html += '<option value="'+val['cod']+'">'+val['plantel']+'-'+val['cod']+'</option>';
+    });
+    $('#colegio').html(html);
 }

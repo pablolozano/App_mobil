@@ -1,0 +1,70 @@
+<html>
+    <body>
+        <div data-role="page" class="pag-admin" id="sms-crear">
+            <div data-role="header" data-position="fixed">
+                <a id="admin_menu.html#inicio" class="ui-btn ui-icon-arrow-l ui-shadow ui-btn-icon-notext ui-corner-all link"></a>
+                <h1>Crear solicitud</h1>
+            </div>
+            <div data-role="content">
+                <label>Colegio</label>
+                <select name="colegio" id="colegio">
+                    <!-- CARGA DE PLANTELES -->
+                </select>
+                <label>Tipo de env&iacute;o</label>
+                <select name="tipo" id="tipo">
+                    <optgroup>
+                        <option value="0">Seleccione...</option>
+                        <option value="NOTIFICACION">Notificaci&oacute;n general</option>
+                        <option value="ADMINISTRATIVO">Administrativo</option>
+                        <option value="ACADEMICO">Acad&eacute;mico</option>
+                    </optgroup>
+                </select>
+                <label>Prioridad</label>
+                <select name="prioridad" id="prioridad">
+                    <optgroup>
+                        <option value="0">Seleccione...</option>
+                        <option value="2">Normal</option>
+                        <option value="1">Urgente</option>
+                    </optgroup>
+                </select>
+                <label>Fecha de env&iacute;o</label>
+                <input type="date" name="fecha" id="fecha" required />
+                <label>Hora de env&iacute;o</label>
+                <input type="time" name="hora" id="hora" required />
+                <label>Dirigido a:</label>
+                <label><input type="checkbox" class="select check-esp" value="TODOS" name="seleccion[]"/>TODOS</label>
+                <label><input type="checkbox" class="select" value="EDUC. INICIAL" name="seleccion[]"/>EDUC. INICIAL</label>
+                <label><input type="checkbox" class="select" value="EDUC. PRIMARIA" name="seleccion[]"/>EDUC. PRIMARIA</label>
+                <label><input type="checkbox" class="select" value="EDUC. SECUNDARIA" name="seleccion[]"/>EDUC. SECUNDARIA</label>
+                <label><input type="checkbox" class="select check-esp" value="MADRES" name="seleccion[]"/>MADRES</label>
+                <label><input type="checkbox" class="select check-esp" value="PADRES" name="seleccion[]"/>PADRES</label>
+                <label><input type="checkbox" class="select" value="EMPLEADOS" name="seleccion[]"/>EMPLEADOS</label>
+                <label><input type="checkbox" class="select check-esp" value="SELECCION POR GRADOS" name="seleccion[]" id="check_grados"/>SELECCION POR GRADOS</label>
+                <div id="div-grados"><!-- CARGA DE GRADOS --></div>
+                <label>Mensaje</label>
+                <textarea name="mensaje" id="mensaje" maxlength="255"></textarea>
+                <br>
+                <input type="button" value="Enviar" id="send" />
+            </div>
+            <div data-role="footer" data-position="fixed">
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#" data-icon="grid" class="ui-btn-active">Inicio</a></li>
+                        <li><a href="#" data-icon="search">Colegios</a></li>
+                        <li><a href="#usuario" data-icon="user" data-transition="flow">Usuario</a></li>
+                    </ul>
+                </div>
+            </div>
+            <img src="../jquery.mobile-1.4.5/images/ajax-loader.gif" alt="Cargando..." class="loader"/>
+            
+            <!-- usuario -->
+            <div data-role="panel" id="usuario" data-position="right" data-display="overlay">
+                <div data-role="content">
+                    <ul data-role="listview">
+                        <li><a id="logoutbtn">Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
